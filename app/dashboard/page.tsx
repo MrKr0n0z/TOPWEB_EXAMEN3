@@ -223,7 +223,7 @@ export default function DashboardPage() {
         </div>
 
         {/* CardGrid */}
-        <div style={{ padding: '40px 24px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div style={{ padding: '40px 24px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
           {/* Card 1: Materias Cursadas */}
           <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
             <div style={{ backgroundColor: '#F0F0F0', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -291,6 +291,32 @@ export default function DashboardPage() {
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0 }}>
                 {profileData.email}
+              </p>
+            </div>
+          </div>
+          {/* Card 4: Calculadora */}
+          <div
+            onClick={() => router.push('/calculadora')}
+            style={{ backgroundColor: '#162240', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'opacity 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            <div style={{ backgroundColor: '#16401c', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#F5F3EF" strokeWidth="2" fill="none" />
+                <path d="M16 18H32M16 24H24M16 30H20" stroke="#F5F3EF" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="30" cy="30" r="4" fill="#F5F3EF" />
+              </svg>
+            </div>
+            <div style={{ padding: '16px' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#F5F3EF', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase', opacity: 0.7 }}>
+                Herramienta
+              </p>
+              <p style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '17px', fontWeight: 500, margin: '0 0 8px 0' }}>
+                Calculadora
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#F5F3EF', fontSize: '12px', fontWeight: 400, margin: 0, opacity: 0.8 }}>
+                Proyecta tu promedio final
               </p>
             </div>
           </div>
