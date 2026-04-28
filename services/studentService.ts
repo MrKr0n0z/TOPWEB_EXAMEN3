@@ -38,6 +38,7 @@ export async function getStudentProfile(): Promise<StudentProfile> {
   }
 
   try {
+    console.log('Token retrieved:', token.substring(0, 20) + '...');
     const response = await fetch('/api/movil/estudiante', {
       method: 'GET',
       headers: {
@@ -46,19 +47,26 @@ export async function getStudentProfile(): Promise<StudentProfile> {
       },
     });
 
+    console.log('Fetch response status:', response.status);
+    console.log('Fetch response ok:', response.ok);
+
     // Handle authentication errors
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('API error response:', errorText);
       if (response.status === 401 || response.status === 403) {
         throw new Error('Token inválido o sesión expirada');
       }
-      throw new Error(`Server returned status ${response.status}`);
+      throw new Error(`Server returned status ${response.status}: ${errorText}`);
     }
 
     // Parse and return the JSON response
     const studentProfile: StudentProfile = await response.json();
+    console.log('Student profile data:', studentProfile);
     return studentProfile;
   } catch (error) {
     if (error instanceof Error) {
+      console.error('getStudentProfile error:', error.message);
       // Re-throw our custom errors as-is
       if (
         error.message.includes('No token found') ||

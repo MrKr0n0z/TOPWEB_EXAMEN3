@@ -18,10 +18,19 @@ export function useProfile() {
      */
     const fetchProfile = async () => {
       try {
-        const data = await getStudentProfile();
-        setProfileData(data);
+        console.log('Fetching student profile...');
+        const response = await getStudentProfile();
+        console.log('Profile data received:', response);
+        
+        // Extract the actual student data from the response
+        // The API returns { code, message, flag, data: { ... } }
+        const studentData = response.data || response;
+        console.log('Extracted student data:', studentData);
+        
+        setProfileData(studentData);
         setIsLoading(false);
       } catch (err) {
+        console.error('Error fetching profile:', err);
         if (err instanceof Error) {
           setError(err.message);
         } else {

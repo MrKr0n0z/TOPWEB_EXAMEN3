@@ -13,6 +13,9 @@ export default function DashboardPage() {
     router.push('/login');
   };
 
+  // Debug: Log the current state
+  console.log('Dashboard render state:', { isLoading, error, profileData });
+
   // Skeleton Loader Component
   if (isLoading) {
     return (
@@ -55,6 +58,7 @@ export default function DashboardPage() {
 
   // Error State Component
   if (error) {
+    console.error('Dashboard error:', error);
     return (
       <>
         <style>{`
@@ -64,11 +68,15 @@ export default function DashboardPage() {
         <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '24px' }}>
           <div style={{ backgroundColor: '#FEE2E2', border: '0.5px solid #FECACA', borderRadius: '10px', padding: '32px', maxWidth: '500px', textAlign: 'center' }}>
             <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#991B1B', fontSize: '24px', fontWeight: 500, letterSpacing: '0.5px', margin: '0 0 16px 0' }}>
-              Error
+              Error al Cargar Perfil
             </h1>
             <p style={{ fontFamily: "'Inter', sans-serif", color: '#991B1B', fontSize: '14px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: '1.6' }}>
               {error}
             </p>
+            <details style={{ textAlign: 'left', marginBottom: '24px', padding: '12px', backgroundColor: '#FFCCCB', borderRadius: '7px', fontSize: '12px' }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>Ver detalles técnicos</summary>
+              <pre style={{ marginTop: '8px', overflow: 'auto', fontSize: '11px' }}>{error}</pre>
+            </details>
             <button
               onClick={() => router.push('/login')}
               style={{
