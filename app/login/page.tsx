@@ -3,12 +3,40 @@
 import { useAuth } from '@/hooks/useAuth';
 
 export default function LoginPage() {
-  const { email, setEmail, password, setPassword, error, isLoading, handleLogin } = useAuth();
+  const { email, setEmail, password, setPassword, error, isLoading, isAuthenticating, handleLogin } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleLogin();
   };
+
+  // Show loading spinner while checking session
+  if (isLoading) {
+    return (
+      <>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(22, 34, 64, 0.1);
+            border-top: 4px solid #162240;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+        `}</style>
+        <div style={{ minHeight: '100vh', backgroundColor: '#F5F3EF', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="spinner" />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -51,7 +79,7 @@ export default function LoginPage() {
                   placeholder="tu.email@institución.edu.mx"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  disabled={isLoading}
+                  disabled={isAuthenticating}
                   style={{
                     width: '100%',
                     padding: '12px 14px',
@@ -80,7 +108,7 @@ export default function LoginPage() {
                   placeholder="Ingresa tu contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLoading}
+                  disabled={isAuthenticating}
                   style={{
                     width: '100%',
                     padding: '12px 14px',
@@ -111,7 +139,7 @@ export default function LoginPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={isLoading}
+                disabled={isAuthenticating}
                 style={{
                   width: '100%',
                   padding: '12px 16px',
@@ -119,24 +147,24 @@ export default function LoginPage() {
                   fontSize: '12px',
                   fontWeight: 500,
                   color: '#F5F3EF',
-                  backgroundColor: isLoading ? '#4B5563' : '#162240',
+                  backgroundColor: isAuthenticating ? '#4B5563' : '#162240',
                   border: 'none',
                   borderRadius: '7px',
-                  cursor: isLoading ? 'not-allowed' : 'pointer',
+                  cursor: isAuthenticating ? 'not-allowed' : 'pointer',
                   transition: 'background-color 0.2s',
                   letterSpacing: '0.5px',
-                  opacity: isLoading ? 0.8 : 1,
+                  opacity: isAuthenticating ? 0.8 : 1,
                 }}
                 onMouseEnter={(e) => {
-                  if (!isLoading) {
+                  if (!isAuthenticating) {
                     e.currentTarget.style.backgroundColor = '#0F1923';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isLoading ? '#4B5563' : '#162240';
+                  e.currentTarget.style.backgroundColor = isAuthenticating ? '#4B5563' : '#162240';
                 }}
               >
-                {isLoading ? 'Loading...' : 'Iniciar Sesión'}
+                {isAuthenticating ? 'Iniciando sesión...' : 'Iniciar Sesión'}
               </button>
             </form>
 

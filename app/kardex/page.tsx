@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getKardex } from '@/services/studentService';
+import { logout } from '@/services/authService';
 
 const STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
@@ -54,7 +55,7 @@ export default function KardexPage() {
   }, []);
 
   const handleLogout = () => {
-    document.cookie = 'sii_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    logout();
     router.push('/login');
   };
 

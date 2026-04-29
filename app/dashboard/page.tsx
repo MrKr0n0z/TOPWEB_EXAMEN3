@@ -2,14 +2,15 @@
 
 import { useProfile } from '@/hooks/useProfile';
 import { useRouter } from 'next/navigation';
+import { logout } from '@/services/authService';
 
 export default function DashboardPage() {
   const { profileData, isLoading, error } = useProfile();
   const router = useRouter();
 
   const handleLogout = () => {
-    // Clear the sii_token cookie
-    document.cookie = 'sii_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    // Use the centralized logout function that clears cookies and notifies other tabs
+    logout();
     router.push('/login');
   };
 
