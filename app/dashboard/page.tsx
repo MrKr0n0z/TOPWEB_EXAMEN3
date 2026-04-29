@@ -171,13 +171,7 @@ export default function DashboardPage() {
         {/* Navbar */}
         <nav style={{ backgroundColor: '#162240', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingLeft: '24px', paddingRight: '24px', borderBottom: '0.5px solid #E0DDD6' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" fill="#F5F3EF" rx="4" />
-              <path
-                d="M16 8C11.58 8 8 11.58 8 16C8 20.42 11.58 24 16 24C20.42 24 24 20.42 24 16C24 11.58 20.42 8 16 8ZM16 22C12.68 22 10 19.32 10 16C10 12.68 12.68 10 16 10C19.32 10 22 12.68 22 16C22 19.32 19.32 22 16 22Z"
-                fill="#162240"
-              />
-            </svg>
+            <img src="/images/logo-itc.png" alt="ITC Logo" style={{ height: '40px', width: 'auto' }} />
             <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '18px', fontWeight: 500, letterSpacing: '0.5px', margin: 0 }}>
               Portal Estudiante
             </h1>

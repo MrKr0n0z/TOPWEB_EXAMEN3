@@ -55,6 +55,7 @@ export default function HorarioPage() {
   const Navbar = () => (
     <nav style={{ backgroundColor: '#162240', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '0.5px solid #243660' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
+        <img src="/images/logo-itc.png" alt="ITC Logo" style={{ height: '40px', width: 'auto' }} />
         <span style={{ fontFamily: "'EB Garamond',serif", color: '#F5F3EF', fontSize: '18px', fontWeight: 500 }}>Portal Estudiante</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           {NAV_LINKS.map(({ href, label }) => {

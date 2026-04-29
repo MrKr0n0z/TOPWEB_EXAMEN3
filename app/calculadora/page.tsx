@@ -151,7 +151,10 @@ export default function CalculadoraPage() {
       <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh' }}>
 
         <nav style={{ backgroundColor: '#162240', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px' }}>
-          <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '18px', fontWeight: 500, margin: 0 }}>Portal Estudiante</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img src="/images/logo-itc.png" alt="ITC Logo" style={{ height: '40px', width: 'auto' }} />
+            <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '18px', fontWeight: 500, margin: 0 }}>Portal Estudiante</h1>
+          </div>
           <button onClick={() => router.push('/dashboard')}
             style={{ fontFamily: "'Inter', sans-serif", padding: '8px 16px', fontSize: '12px', fontWeight: 500, backgroundColor: 'transparent', color: '#F5F3EF', border: '0.5px solid #F5F3EF', borderRadius: '7px', cursor: 'pointer' }}>
             Volver al Dashboard
