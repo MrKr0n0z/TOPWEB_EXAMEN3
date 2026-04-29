@@ -16,9 +16,9 @@ export default function LoginPage() {
         @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
       `}</style>
 
-      <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh' }}>
+      <div style={{ minHeight: '100vh', backgroundImage: 'url(/images/login.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         {/* Navbar */}
-        <nav style={{ backgroundColor: '#16401c', height: '64px', display: 'flex', alignItems: 'center', paddingLeft: '24px', gap: '12px' }}>
+        <nav style={{ backgroundColor: '#162240', height: '64px', display: 'flex', alignItems: 'center', paddingLeft: '24px', gap: '12px' }}>
           <img src="/images/logo-itc.png" alt="ITC Logo" style={{ height: '48px', width: 'auto' }} />
           <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '24px', fontWeight: 500, letterSpacing: '0.5px', margin: 0 }}>
             SII - TecNM en Celaya
@@ -26,11 +26,11 @@ export default function LoginPage() {
         </nav>
 
         {/* Login Container */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 64px)', padding: '24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 64px)', padding: '24px', backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
           {/* Login Card */}
           <div style={{ width: '100%', maxWidth: '400px', backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
             {/* Card Header */}
-            <div style={{ backgroundColor: '#16401c', padding: '32px 24px', textAlign: 'center' }}>
+            <div style={{ backgroundColor: '#162240', padding: '32px 24px', textAlign: 'center' }}>
               <h2 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '28px', fontWeight: 500, letterSpacing: '0.5px', margin: 0, marginBottom: '8px' }}>
                 Acceso
               </h2>
@@ -119,7 +119,7 @@ export default function LoginPage() {
                   fontSize: '12px',
                   fontWeight: 500,
                   color: '#F5F3EF',
-                  backgroundColor: isLoading ? '#4B5563' : '#16401c',
+                  backgroundColor: isLoading ? '#4B5563' : '#162240',
                   border: 'none',
                   borderRadius: '7px',
                   cursor: isLoading ? 'not-allowed' : 'pointer',
@@ -129,11 +129,11 @@ export default function LoginPage() {
                 }}
                 onMouseEnter={(e) => {
                   if (!isLoading) {
-                    e.currentTarget.style.backgroundColor = '#0D2612';
+                    e.currentTarget.style.backgroundColor = '#0F1923';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = isLoading ? '#4B5563' : '#16401c';
+                  e.currentTarget.style.backgroundColor = isLoading ? '#4B5563' : '#162240';
                 }}
               >
                 {isLoading ? 'Loading...' : 'Iniciar Sesión'}
@@ -144,7 +144,7 @@ export default function LoginPage() {
             <div style={{ padding: '0 24px 24px 24px', textAlign: 'center', borderTop: '0.5px solid #E0DDD6' }}>
               <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0, letterSpacing: '0.3px' }}>
                 ¿Problemas con tu acceso?{' '}
-                <a href="#" style={{ color: '#16401c', textDecoration: 'none', fontWeight: 500 }}>
+                <a href="#" style={{ color: '#162240', textDecoration: 'none', fontWeight: 500 }}>
                   Contacta soporte
                 </a>
               </p>
