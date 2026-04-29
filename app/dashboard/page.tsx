@@ -358,15 +358,15 @@ export default function DashboardPage() {
               (e.currentTarget.style.boxShadow = '0 2px 8px rgba(22,34,64,0.2)');
             }}
           >
-            <div style={{ backgroundColor: '#16401c', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ backgroundColor: '#ffffff', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#86EFAC" strokeWidth="2" fill="none" />
-                <path d="M16 18H32M16 24H24M16 30H20" stroke="#86EFAC" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="30" cy="30" r="4" fill="#86EFAC" />
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#0b110d" strokeWidth="2" fill="none" />
+                <path d="M16 18H32M16 24H24M16 30H20" stroke="#040f08" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="30" cy="30" r="4" fill="#030c07" />
               </svg>
             </div>
             <div style={{ padding: '20px' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#86EFAC', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#609ffd', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
                 Herramienta
               </p>
               <p style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '24px', fontWeight: 500, margin: '0 0 6px 0' }}>
