@@ -250,28 +250,22 @@ El archivo `proxy.ts` implementa un middleware que:
 ## Capturas de Pantalla
 
 ### Pantalla de Login
-![Login](./screenshots/login.png)
 *Interfaz de autenticación segura con credenciales institucionales*
 ![alt text](public/images/image.png)
 
 ### Dashboard Principal
-![Dashboard](./screenshots/dashboard.png)
 *Panel de inicio con información resumida del estudiante y estadísticas académicas*
 
 ### Vista de Calificaciones
-![Calificaciones](./screenshots/calificaciones.png)
 *Listado detallado de materias cursadas y sus calificaciones por semestre*
 
 ### Horario de Clases
-![Horario](./screenshots/horario.png)
 *Calendario semanal con horario de clases, profesor y ubicación*
 
 ### Kardex Académico
-![Kardex](./screenshots/kardex.png)
 *Historial completo de materias cursadas a lo largo de la carrera*
 
 ### Calculadora de Promedio
-![Calculadora](./screenshots/calculadora.png)
 *Herramienta para simular y proyectar promedio con diferentes escenarios*
 
 ## 🌐 API Base
