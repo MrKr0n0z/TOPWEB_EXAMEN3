@@ -266,11 +266,13 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* CardGrid */}
-        <div style={{ padding: '40px 24px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        {/* Main Cards Grid */}
+        <div style={{ padding: '40px 24px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
           {/* Card 1: Materias Cursadas */}
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
-            <div style={{ backgroundColor: '#F0F0F0', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '12px', border: '1px solid #E0DDD6', overflow: 'hidden', transition: 'box-shadow 0.3s', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)')}
+            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)')}>
+            <div style={{ backgroundColor: '#F9F7F4', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <path
                   d="M10 8C8.9 8 8 8.9 8 10V38C8 39.1 8.9 40 10 40H38C39.1 40 40 39.1 40 38V10C40 8.9 39.1 8 38 8H10ZM10 10H38V38H10V10Z"
@@ -281,123 +283,149 @@ export default function DashboardPage() {
                 <path d="M14 30H34V32H14V30Z" fill="#16401c" />
               </svg>
             </div>
-            <div style={{ padding: '16px' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
+            <div style={{ padding: '20px' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
                 Materias
               </p>
-              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '17px', fontWeight: 500, margin: '0 0 8px 0' }}>
+              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '28px', fontWeight: 500, margin: '0 0 8px 0' }}>
                 {profileData.materias_cursadas}
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#999999', fontSize: '12px', fontWeight: 400, margin: 0 }}>
                 {profileData.materias_aprobadas} Aprobadas • {profileData.materias_reprobadas} Reprobadas
               </p>
             </div>
           </div>
 
           {/* Card 2: Avance Académico */}
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
-            <div style={{ backgroundColor: '#F0F0F0', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '12px', border: '1px solid #E0DDD6', overflow: 'hidden', transition: 'box-shadow 0.3s', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)')}
+            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)')}>
+            <div style={{ backgroundColor: '#F9F7F4', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <circle cx="24" cy="24" r="16" stroke="#16401c" strokeWidth="2" fill="none" />
                 <path d="M24 8V24L32 32" stroke="#16401c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <div style={{ padding: '16px' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
+            <div style={{ padding: '20px' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
                 Progreso
               </p>
-              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '17px', fontWeight: 500, margin: '0 0 8px 0' }}>
+              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '28px', fontWeight: 500, margin: '0 0 8px 0' }}>
                 {profileData.percentaje_avance_cursando}%
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#999999', fontSize: '12px', fontWeight: 400, margin: 0 }}>
                 Avance del Semestre Actual
               </p>
             </div>
           </div>
 
           {/* Card 3: Información Institucional */}
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '1.5px solid #4A8CF5', overflow: 'hidden' }}>
-            <div style={{ backgroundColor: '#F0F0F0', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '12px', border: '2px solid #4A8CF5', overflow: 'hidden', transition: 'box-shadow 0.3s', boxShadow: '0 2px 8px rgba(74,140,245,0.1)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 16px rgba(74,140,245,0.15)')}
+            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(74,140,245,0.1)')}>
+            <div style={{ backgroundColor: '#F0F4FF', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <path
                   d="M24 8C15.2 8 8 15.2 8 24C8 32.8 15.2 40 24 40C32.8 40 40 32.8 40 24C40 15.2 32.8 8 24 8ZM24 36C17.4 36 12 30.6 12 24C12 17.4 17.4 12 24 12C30.6 12 36 17.4 36 24C36 30.6 30.6 36 24 36Z"
-                  fill="#16401c"
+                  fill="#4A8CF5"
                 />
-                <path d="M24 16V24L30 30" fill="#16401c" />
+                <path d="M24 16V24L30 30" fill="#4A8CF5" />
               </svg>
             </div>
-            <div style={{ padding: '16px' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
+            <div style={{ padding: '20px' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
                 Información
               </p>
-              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '17px', fontWeight: 500, margin: '0 0 8px 0' }}>
+              <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '18px', fontWeight: 500, margin: '0 0 6px 0' }}>
                 {profileData.numero_control}
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#999999', fontSize: '12px', fontWeight: 400, margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {profileData.email}
               </p>
             </div>
           </div>
-{/* Card 4: Calculadora */}
+
+          {/* Card 4: Calculadora */}
           <div
             onClick={() => router.push('/calculadora')}
-            style={{ backgroundColor: '#162240', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'opacity 0.2s' }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            style={{ backgroundColor: '#162240', borderRadius: '12px', border: '1px solid #1a2d3a', overflow: 'hidden', cursor: 'pointer', transition: 'all 0.3s', boxShadow: '0 2px 8px rgba(22,34,64,0.2)' }}
+            onMouseEnter={(e) => { 
+              (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+              (e.currentTarget.style.boxShadow = '0 12px 20px rgba(22,34,64,0.3)');
+            }}
+            onMouseLeave={(e) => { 
+              (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+              (e.currentTarget.style.boxShadow = '0 2px 8px rgba(22,34,64,0.2)');
+            }}
           >
-            <div style={{ backgroundColor: '#16401c', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ backgroundColor: '#16401c', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#F5F3EF" strokeWidth="2" fill="none" />
-                <path d="M16 18H32M16 24H24M16 30H20" stroke="#F5F3EF" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="30" cy="30" r="4" fill="#F5F3EF" />
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#86EFAC" strokeWidth="2" fill="none" />
+                <path d="M16 18H32M16 24H24M16 30H20" stroke="#86EFAC" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="30" cy="30" r="4" fill="#86EFAC" />
               </svg>
             </div>
-            <div style={{ padding: '16px' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#F5F3EF', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase', opacity: 0.7 }}>
+            <div style={{ padding: '20px' }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", color: '#86EFAC', fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
                 Herramienta
               </p>
-              <p style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '17px', fontWeight: 500, margin: '0 0 8px 0' }}>
+              <p style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '24px', fontWeight: 500, margin: '0 0 6px 0' }}>
                 Calculadora
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", color: '#F5F3EF', fontSize: '12px', fontWeight: 400, margin: 0, opacity: 0.8 }}>
-                Proyecta tu promedio final
+              <p style={{ fontFamily: "'Inter', sans-serif", color: 'rgba(245,243,239,0.8)', fontSize: '12px', fontWeight: 400, margin: 0 }}>
+                Proyecta tu promedio
               </p>
             </div>
           </div>
         </div>
+
+        {/* Navigation Cards Section */}
+        <div style={{ padding: '40px 24px' }}>
+          <h3 style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '20px', fontWeight: 500, margin: '0 0 24px 0', letterSpacing: '0.5px' }}>
+            Acceso Rápido
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+            {[
+              { href: '/calificaciones', label: 'Calificaciones', desc: 'Consulta tus calificaciones del semestre actual por parcial.', icon: '📊', color: '#4A8CF5' },
+              { href: '/kardex', label: 'Kardex', desc: 'Historial académico completo organizado por semestre.', icon: '📋', color: '#16401c' },
+              { href: '/horario', label: 'Horario', desc: 'Visualiza tus clases organizadas por día y horario.', icon: '📅', color: '#4A8CF5' },
+            ].map(({ href, label, desc, icon, color }) => (
+              <a key={href} href={href} style={{ textDecoration: 'none' }}>
+                <div
+                  style={{ backgroundColor: '#FFFFFF', borderRadius: '12px', border: `2px solid ${color}20`, overflow: 'hidden', cursor: 'pointer', transition: 'all 0.3s', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+                  onMouseEnter={e => { 
+                    (e.currentTarget as HTMLDivElement).style.borderColor = color;
+                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+                    (e.currentTarget.style.boxShadow = `0 8px 16px ${color}20`);
+                  }}
+                  onMouseLeave={e => { 
+                    (e.currentTarget as HTMLDivElement).style.borderColor = `${color}20`;
+                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                    (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)');
+                  }}
+                >
+                  <div style={{ backgroundColor: `${color}08`, height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40px' }}>
+                    {icon}
+                  </div>
+                  <div style={{ padding: '20px' }}>
+                    <p style={{ fontFamily: "'Inter', sans-serif", color: color, fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 8px 0', textTransform: 'uppercase' }}>
+                      {label}
+                    </p>
+                    <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '18px', fontWeight: 500, margin: '0 0 8px 0' }}>
+                      {label}
+                    </p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", color: '#999999', fontSize: '13px', fontWeight: 400, margin: 0, lineHeight: '1.6' }}>
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Navigation Cards */}
-      <div style={{ padding: '0 24px 40px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-        {[
-          { href: '/calificaciones', label: 'Calificaciones', desc: 'Consulta tus calificaciones del semestre actual por parcial.', icon: '📊' },
-          { href: '/kardex', label: 'Kardex', desc: 'Historial académico completo organizado por semestre.', icon: '📋' },
-          { href: '/horario', label: 'Horario', desc: 'Visualiza tus clases organizadas por día y horario.', icon: '📅' },
-        ].map(({ href, label, desc, icon }) => (
-          <a key={href} href={href} style={{ textDecoration: 'none' }}>
-            <div
-              style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'border-color 0.2s, box-shadow 0.2s' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#162240'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 12px rgba(22,34,64,0.1)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#E0DDD6'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; }}
-            >
-              <div style={{ backgroundColor: '#F0F0F0', height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '32px' }}>
-                {icon}
-              </div>
-              <div style={{ padding: '16px' }}>
-                <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 8px 0', textTransform: 'uppercase' }}>
-                  Acceso Rápido
-                </p>
-                <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '17px', fontWeight: 500, margin: '0 0 6px 0' }}>
-                  {label}
-                </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0, lineHeight: '1.5' }}>
-                  {desc}
-                </p>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
+
     </>
   );
 }
