@@ -28,7 +28,7 @@ export default function LoginPage() {
             <path d="M16 12C14.34 12 13 13.34 13 15V17C13 18.66 14.34 20 16 20C17.66 20 19 18.66 19 17V15C19 13.34 17.66 12 16 12Z" fill="#16401c" />
           </svg>
           <h1 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '24px', fontWeight: 500, letterSpacing: '0.5px', margin: 0 }}>
-            Portal Estudiante TecNM
+            SII - TecNM en Celaya
           </h1>
         </nav>
 

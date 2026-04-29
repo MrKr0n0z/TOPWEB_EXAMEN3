@@ -171,7 +171,7 @@ export default function DashboardPage() {
               style={{
                 width: '80px',
                 height: '80px',
-                borderRadius: '50%',
+                borderRadius: '7px',
                 border: '1px solid #F5F3EF',
                 objectFit: 'cover',
               }}
