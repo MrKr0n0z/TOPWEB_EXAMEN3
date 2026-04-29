@@ -8,13 +8,10 @@ const STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
   @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
-  @keyframes shimmer { 0%{background-position:-1000px 0} 100%{background-position:1000px 0} }
   .skeleton { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
   .fade-in  { animation: fadeIn 0.4s ease forwards; }
   .row-hover:hover { background-color: #F5F3EF !important; }
   input::placeholder { color: #AAAAAA; }
-  .spinner { width: 48px; height: 48px; border: 4px solid rgba(22,34,64,0.1); border-top: 4px solid #162240; border-radius: 50%; animation: spin 1s linear infinite; }
 `;
 
 const NAV_LINKS = [
@@ -24,8 +21,9 @@ const NAV_LINKS = [
   { href: '/horario',        label: 'Horario' },
 ];
 
+// numero_calificacion: 1=P1, 2=P2, 3=P3, 4=P4, 5=Final/Promedio
 function parseParciales(calificaiones: any[]) {
-  const map: Record<number, string | null> = { 1: null, 2: null, 3: null, 4: null };
+  const map: Record<number, string | null> = { 1: null, 2: null, 3: null, 4: null, 5: null };
   (calificaiones ?? []).forEach((c: any) => { map[c.numero_calificacion] = c.calificacion; });
   return map;
 }
@@ -41,7 +39,7 @@ function GradeBadge({ value }: { value: string | null }) {
     ? { bg: '#FEF9C3', text: '#854D0E' }
     : { bg: '#FEE2E2', text: '#991B1B' };
   return (
-    <span style={{ fontFamily: "'Inter',sans-serif", fontSize: '12px', fontWeight: 500, color: text, backgroundColor: bg, padding: '3px 10px', borderRadius: '20px' }}>
+    <span style={{ fontFamily: "'Inter',sans-serif", fontSize: '12px', fontWeight: 500, color: text, backgroundColor: bg, padding: '3px 8px', borderRadius: '20px' }}>
       {n}
     </span>
   );
@@ -69,7 +67,6 @@ export default function CalificacionesPage() {
   const Navbar = () => (
     <nav style={{ backgroundColor: '#162240', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '0.5px solid #243660' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-        <img src="/images/logo-itc.png" alt="ITC Logo" style={{ height: '40px', width: 'auto' }} />
         <span style={{ fontFamily: "'EB Garamond',serif", color: '#F5F3EF', fontSize: '18px', fontWeight: 500 }}>Portal Estudiante</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           {NAV_LINKS.map(({ href, label }) => {
@@ -91,14 +88,13 @@ export default function CalificacionesPage() {
   if (isLoading) return (
     <>
       <style>{STYLES}</style>
-      <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh' }}>
         <Navbar />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '24px', padding: '40px 24px' }}>
-          <div className="spinner" />
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ fontFamily: "'Inter',sans-serif", color: '#162240', fontSize: '14px', fontWeight: 500, margin: '0 0 8px 0', letterSpacing: '0.5px' }}>Cargando calificaciones...</p>
-            <p style={{ fontFamily: "'Inter',sans-serif", color: '#999999', fontSize: '12px', fontWeight: 400, margin: 0, letterSpacing: '0.3px' }}>Por favor espera mientras obtenemos tus datos</p>
-          </div>
+        <div style={{ padding: '40px 24px' }}>
+          <div style={{ height: '28px', width: '220px', backgroundColor: '#E0DDD6', borderRadius: '6px', marginBottom: '24px' }} className="skeleton" />
+          {[1,2,3,4,5].map(i => (
+            <div key={i} style={{ height: '52px', backgroundColor: '#FFFFFF', borderRadius: '8px', marginBottom: '10px', border: '0.5px solid #E0DDD6' }} className="skeleton" />
+          ))}
         </div>
       </div>
     </>
@@ -170,8 +166,10 @@ export default function CalificacionesPage() {
 
         <div style={{ padding: '24px' }}>
           <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 120px 70px 70px 70px 90px', padding: '10px 20px', backgroundColor: '#F5F3EF', borderBottom: '0.5px solid #E0DDD6' }}>
-              {['Materia', 'Clave', 'P1', 'P2', 'P3', 'Final'].map(h => (
+
+            {/* Column headers */}
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 110px 55px 55px 55px 55px 75px', padding: '10px 20px', backgroundColor: '#F5F3EF', borderBottom: '0.5px solid #E0DDD6' }}>
+              {['Materia', 'Clave', 'P1', 'P2', 'P3', 'P4', 'Final'].map(h => (
                 <p key={h} style={{ fontFamily: "'Inter',sans-serif", color: '#888', fontSize: '10px', fontWeight: 500, letterSpacing: '0.6px', textTransform: 'uppercase', margin: 0, textAlign: h === 'Materia' || h === 'Clave' ? 'left' : 'center' }}>{h}</p>
               ))}
             </div>
@@ -188,13 +186,13 @@ export default function CalificacionesPage() {
                 const parc  = parseParciales(item.calificaiones ?? []);
                 return (
                   <div key={idx} className="row-hover"
-                    style={{ display: 'grid', gridTemplateColumns: '2fr 120px 70px 70px 70px 90px', padding: '14px 20px', borderBottom: idx < filtered.length - 1 ? '0.5px solid #E0DDD6' : 'none', alignItems: 'center', backgroundColor: '#FFFFFF', transition: 'background 0.15s' }}>
+                    style={{ display: 'grid', gridTemplateColumns: '2fr 110px 55px 55px 55px 55px 75px', padding: '14px 20px', borderBottom: idx < filtered.length - 1 ? '0.5px solid #E0DDD6' : 'none', alignItems: 'center', backgroundColor: '#FFFFFF', transition: 'background 0.15s' }}>
                     <div>
                       <p style={{ fontFamily: "'EB Garamond',serif", color: '#162240', fontSize: '16px', margin: 0 }}>{name}</p>
                       {grupo && <p style={{ fontFamily: "'Inter',sans-serif", color: '#AAA', fontSize: '10px', margin: '2px 0 0 0' }}>Grupo {grupo}</p>}
                     </div>
                     <p style={{ fontFamily: "'Inter',sans-serif", color: '#666', fontSize: '12px', margin: 0 }}>{clave}</p>
-                    {[1, 2, 3, 4].map(n => (
+                    {[1, 2, 3, 4, 5].map(n => (
                       <div key={n} style={{ display: 'flex', justifyContent: 'center' }}>
                         <GradeBadge value={parc[n]} />
                       </div>
