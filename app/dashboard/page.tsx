@@ -22,34 +22,84 @@ export default function DashboardPage() {
       <>
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+          
           @keyframes pulse {
             0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
           }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+          }
+          
           .skeleton {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           }
+          
+          .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(22, 34, 64, 0.1);
+            border-top: 4px solid #162240;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+          
+          .skeleton-shimmer {
+            background: linear-gradient(
+              90deg,
+              #E0DDD6 0%,
+              #E8E5DD 50%,
+              #E0DDD6 100%
+            );
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+          }
         `}</style>
 
-        <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh' }}>
+        <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
           {/* Navbar Skeleton */}
           <div style={{ backgroundColor: '#162240', height: '52px', display: 'flex', alignItems: 'center', paddingLeft: '24px' }} />
 
-          {/* Hero Skeleton */}
-          <div style={{ backgroundColor: '#162240', padding: '40px 24px', minHeight: '240px' }} />
-
-          {/* StatsRow Skeleton */}
-          <div style={{ backgroundColor: '#FFFFFF', padding: '24px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} style={{ height: '80px', backgroundColor: '#E0DDD6', borderRadius: '7px' }} className="skeleton" />
-            ))}
-          </div>
-
-          {/* CardGrid Skeleton */}
-          <div style={{ padding: '40px 24px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {[1, 2, 3].map((i) => (
-              <div key={i} style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', minHeight: '240px' }} className="skeleton" />
-            ))}
+          {/* Central Loading Spinner */}
+          <div style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '24px',
+            padding: '40px 24px',
+          }}>
+            <div className="spinner" />
+            <div style={{ textAlign: 'center' }}>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                color: '#162240',
+                fontSize: '14px',
+                fontWeight: 500,
+                margin: '0 0 8px 0',
+                letterSpacing: '0.5px',
+              }}>
+                Cargando tu información...
+              </p>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                color: '#999999',
+                fontSize: '12px',
+                fontWeight: 400,
+                margin: 0,
+                letterSpacing: '0.3px',
+              }}>
+                Por favor espera mientras obtenemos tus datos
+              </p>
+            </div>
           </div>
         </div>
       </>

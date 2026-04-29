@@ -8,10 +8,13 @@ const STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
   @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+  @keyframes shimmer { 0%{background-position:-1000px 0} 100%{background-position:1000px 0} }
   .skeleton { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
   .fade-in  { animation: fadeIn 0.4s ease forwards; }
   .class-card { transition: transform 0.15s, box-shadow 0.15s; }
   .class-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(22,34,64,0.13) !important; }
+  .spinner { width: 48px; height: 48px; border: 4px solid rgba(22,34,64,0.1); border-top: 4px solid #162240; border-radius: 50%; animation: spin 1s linear infinite; }
 `;
 
 const NAV_LINKS = [
@@ -73,10 +76,14 @@ export default function HorarioPage() {
   if (isLoading) return (
     <>
       <style>{STYLES}</style>
-      <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh' }}>
+      <div style={{ backgroundColor: '#F5F3EF', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Navbar />
-        <div style={{ padding: '40px 24px', display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: '16px' }}>
-          {[1,2,3,4,5].map(i => <div key={i} style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', height: '280px', border: '0.5px solid #E0DDD6' }} className="skeleton" />)}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '24px', padding: '40px 24px' }}>
+          <div className="spinner" />
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontFamily: "'Inter',sans-serif", color: '#162240', fontSize: '14px', fontWeight: 500, margin: '0 0 8px 0', letterSpacing: '0.5px' }}>Cargando tu horario...</p>
+            <p style={{ fontFamily: "'Inter',sans-serif", color: '#999999', fontSize: '12px', fontWeight: 400, margin: 0, letterSpacing: '0.3px' }}>Por favor espera mientras obtenemos tus datos</p>
+          </div>
         </div>
       </div>
     </>
