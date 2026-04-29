@@ -32,7 +32,7 @@ export default function LoginPage() {
             {/* Card Header */}
             <div style={{ backgroundColor: '#162240', padding: '32px 24px', textAlign: 'center' }}>
               <h2 style={{ fontFamily: "'EB Garamond', serif", color: '#F5F3EF', fontSize: '28px', fontWeight: 500, letterSpacing: '0.5px', margin: 0, marginBottom: '8px' }}>
-                Acceso
+                Inicio de Sesión
               </h2>
               <p style={{ fontFamily: "'Inter', sans-serif", color: '#F5F3EF', fontSize: '13px', fontWeight: 400, margin: 0, opacity: 0.9 }}>
                 Ingresa tus credenciales
