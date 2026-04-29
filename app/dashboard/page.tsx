@@ -294,38 +294,6 @@ export default function DashboardPage() {
               </p>
             </div>
           </div>
-
-          {/* Navigation Cards */}
-<div style={{ padding: '0 24px 40px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-  {[
-    { href: '/calificaciones', label: 'Calificaciones', desc: 'Consulta tus calificaciones del semestre actual por parcial.', icon: '📊' },
-    { href: '/kardex',         label: 'Kardex',         desc: 'Historial académico completo organizado por semestre.',     icon: '📋' },
-    { href: '/horario',        label: 'Horario',         desc: 'Visualiza tus clases organizadas por día y horario.',       icon: '📅' },
-  ].map(({ href, label, desc, icon }) => (
-    <a key={href} href={href} style={{ textDecoration: 'none' }}>
-      <div
-        style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden', cursor: 'pointer', transition: 'border-color 0.2s, box-shadow 0.2s' }}
-        onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#162240'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 12px rgba(22,34,64,0.1)'; }}
-        onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = '#E0DDD6'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; }}
-      >
-        <div style={{ backgroundColor: '#F0F0F0', height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '32px' }}>
-          {icon}
-        </div>
-        <div style={{ padding: '16px' }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", color: '#4A8CF5', fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', margin: '0 0 8px 0', textTransform: 'uppercase' }}>
-            Acceso Rápido
-          </p>
-          <p style={{ fontFamily: "'EB Garamond', serif", color: '#162240', fontSize: '17px', fontWeight: 500, margin: '0 0 6px 0' }}>
-            {label}
-          </p>
-          <p style={{ fontFamily: "'Inter', sans-serif", color: '#666666', fontSize: '12px', fontWeight: 400, margin: 0, lineHeight: '1.5' }}>
-            {desc}
-          </p>
-        </div>
-      </div>
-    </a>
-  ))}
-</div>
         </div>
       </div>
     </>
