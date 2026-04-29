@@ -25,8 +25,9 @@ const NAV_LINKS = [
   { href: '/horario',        label: 'Horario' },
 ];
 
+// numero_calificacion: 1=P1, 2=P2, 3=P3, 4=P4, 5=Final/Promedio
 function parseParciales(calificaiones: any[]) {
-  const map: Record<number, string | null> = { 1: null, 2: null, 3: null, 4: null };
+  const map: Record<number, string | null> = { 1: null, 2: null, 3: null, 4: null, 5: null };
   (calificaiones ?? []).forEach((c: any) => { map[c.numero_calificacion] = c.calificacion; });
   return map;
 }
@@ -42,7 +43,7 @@ function GradeBadge({ value }: { value: string | null }) {
     ? { bg: '#FEF9C3', text: '#854D0E' }
     : { bg: '#FEE2E2', text: '#991B1B' };
   return (
-    <span style={{ fontFamily: "'Inter',sans-serif", fontSize: '12px', fontWeight: 500, color: text, backgroundColor: bg, padding: '3px 10px', borderRadius: '20px' }}>
+    <span style={{ fontFamily: "'Inter',sans-serif", fontSize: '12px', fontWeight: 500, color: text, backgroundColor: bg, padding: '3px 8px', borderRadius: '20px' }}>
       {n}
     </span>
   );
@@ -171,8 +172,10 @@ export default function CalificacionesPage() {
 
         <div style={{ padding: '24px' }}>
           <div style={{ backgroundColor: '#FFFFFF', borderRadius: '10px', border: '0.5px solid #E0DDD6', overflow: 'hidden' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 120px 70px 70px 70px 90px', padding: '10px 20px', backgroundColor: '#F5F3EF', borderBottom: '0.5px solid #E0DDD6' }}>
-              {['Materia', 'Clave', 'P1', 'P2', 'P3', 'Final'].map(h => (
+
+            {/* Column headers */}
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 110px 55px 55px 55px 55px 75px', padding: '10px 20px', backgroundColor: '#F5F3EF', borderBottom: '0.5px solid #E0DDD6' }}>
+              {['Materia', 'Clave', 'P1', 'P2', 'P3', 'P4', 'Final'].map(h => (
                 <p key={h} style={{ fontFamily: "'Inter',sans-serif", color: '#888', fontSize: '10px', fontWeight: 500, letterSpacing: '0.6px', textTransform: 'uppercase', margin: 0, textAlign: h === 'Materia' || h === 'Clave' ? 'left' : 'center' }}>{h}</p>
               ))}
             </div>
@@ -189,13 +192,13 @@ export default function CalificacionesPage() {
                 const parc  = parseParciales(item.calificaiones ?? []);
                 return (
                   <div key={idx} className="row-hover"
-                    style={{ display: 'grid', gridTemplateColumns: '2fr 120px 70px 70px 70px 90px', padding: '14px 20px', borderBottom: idx < filtered.length - 1 ? '0.5px solid #E0DDD6' : 'none', alignItems: 'center', backgroundColor: '#FFFFFF', transition: 'background 0.15s' }}>
+                    style={{ display: 'grid', gridTemplateColumns: '2fr 110px 55px 55px 55px 55px 75px', padding: '14px 20px', borderBottom: idx < filtered.length - 1 ? '0.5px solid #E0DDD6' : 'none', alignItems: 'center', backgroundColor: '#FFFFFF', transition: 'background 0.15s' }}>
                     <div>
                       <p style={{ fontFamily: "'EB Garamond',serif", color: '#162240', fontSize: '16px', margin: 0 }}>{name}</p>
                       {grupo && <p style={{ fontFamily: "'Inter',sans-serif", color: '#AAA', fontSize: '10px', margin: '2px 0 0 0' }}>Grupo {grupo}</p>}
                     </div>
                     <p style={{ fontFamily: "'Inter',sans-serif", color: '#666', fontSize: '12px', margin: 0 }}>{clave}</p>
-                    {[1, 2, 3, 4].map(n => (
+                    {[1, 2, 3, 4, 5].map(n => (
                       <div key={n} style={{ display: 'flex', justifyContent: 'center' }}>
                         <GradeBadge value={parc[n]} />
                       </div>
